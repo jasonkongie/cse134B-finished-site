@@ -10,15 +10,11 @@
 <body>
   <header>
     <h1>Connect with Me!</h1>
-
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">BLOG</a></li>
-
-
         <li><a href="about.html">About Me</a></li>
-        
         <li><a href="research.html">Research Data</a></li>
         <li><a href="donate.html">Donate</a></li>
       </ul>
@@ -28,11 +24,12 @@
     <section>
       <h2>Get in Touch</h2>
       <p>Reach out through your preferred method:</p>
-      <ul>
-        <li><a href="mailto:brandon@ucsd.edu">Email</a></li>
-        <li><a href="https://www.facebook.com/brandon.xu.520" target="_blank">Facebook</a></li>
-        <li><a href="https://instagram.com/brandon_posts" target="_blank">Instagram</a></li>
-      </ul>
+      <!--  buttons for email, facebook,and insta.. -->
+      <button id="emailBtn">Email</button>
+      <button id="facebookBtn">Facebook</button>
+      <button id="instagramBtn">Instagram</button>
+
+
     </section>
     <section id="contactFormSection">
       <h3>Contact Form</h3>
@@ -41,17 +38,15 @@
           <legend>Contact Details</legend>
           <label for="name">Name:</label>
 
-
           <input type="text" id="name" name="name" required>
           <br>
           <label for="email">Email:</label>
-
           <input type="email" id="email" name="email" required>
           <br>
+
           <label for="message">Message:</label>
           <textarea id="message" name="message"></textarea>
         </fieldset>
-
         <button type="submit">Send Message</button>
       </form>
     </section>
@@ -59,6 +54,27 @@
   <footer>
     <p>&copy; 2025 Brandon's Research Hub</p>
   </footer>
+
   <script src="scripts.js"></script>
+
+  <!--  script for button click behavior (optional) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const emailBtn = document.getElementById('emailBtn');
+      emailBtn.addEventListener('click', () => {
+        window.location.href = "mailto:brandon@ucsd.edu";
+      });
+
+      const facebookBtn = document.getElementById('facebookBtn');
+      facebookBtn.addEventListener('click', () => {
+        window.open("https://www.facebook.com/brandon.xu.520", "_blank");
+      });
+
+      const instagramBtn = document.getElementById('instagramBtn');
+      instagramBtn.addEventListener('click', () => {
+        window.open("https://instagram.com/brandon_posts", "_blank");
+      });
+    });
+  </script>
 </body>
 </html>
