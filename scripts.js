@@ -250,8 +250,10 @@ function loadLocalBlog() {
       card.setAttribute("title", item.title);
       card.setAttribute("img", item.img);
       card.setAttribute("alt", item.alt);
+
       card.setAttribute("description", item.description);
       card.setAttribute("link", item.link);
+
       card.setAttribute("linktext", item.linkText);
       container.appendChild(card);
     });
@@ -298,4 +300,98 @@ function loadLocalResearch() {
 
 window.addEventListener("DOMContentLoaded", () => {
   initLocalData();
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('crudForm')) {
+    let selectedIndex = -1;
+    let selectedCard = null;
+
+    function loadCrudData() {
+      const data = JSON.parse(localStorage.getItem('myProjects')) || [];
+      const container = document.getElementById('crudCardsContainer');
+      container.innerHTML = '';
+
+      data.forEach((item, index) => {
+        const card = document.createElement('blog-card');
+        card.setAttribute('title', item.title);
+        card.setAttribute('img', item.img);
+        
+        card.setAttribute('alt', item.alt);
+        card.setAttribute('description', item.description);
+        card.setAttribute('link', item.link);
+        card.setAttribute('linktext', item.linkText);
+
+        card.addEventListener('click', () => {
+          // Remove selection from previously selected card
+          if (selectedCard) {
+            selectedCard.classList.remove('selected');
+          }
+          // Mark this card as selected
+          card.classList.add('selected');
+          selectedCard = card;
+          selectedIndex = index;
+
+          // Populate form fields with the selected card's data
+          document.getElementById('title').value = item.title;
+          document.getElementById('img').value = item.img;
+          document.getElementById('alt').value = item.alt;
+          document.getElementById('description').value = item.description;
+          document.getElementById('link').value = item.link;
+          document.getElementById('linkText').value = item.linkText;
+          document.getElementById('btnUpdate').disabled = false;
+          document.getElementById('btnDelete').disabled = false;
+        });
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById('btnReadAll').addEventListener('click', loadCrudData);
+
+    document.getElementById('btnCreate').addEventListener('click', () => {
+      const data = JSON.parse(localStorage.getItem('myProjects')) || [];
+      const newItem = {
+        title: document.getElementById('title').value,
+        img: document.getElementById('img').value,
+        alt: document.getElementById('alt').value,
+        description: document.getElementById('description').value,
+        link: document.getElementById('link').value,
+        linkText: document.getElementById('linkText').value
+      };
+      data.push(newItem);
+      localStorage.setItem('myProjects', JSON.stringify(data));
+      loadCrudData();
+    });
+
+    document.getElementById('btnUpdate').addEventListener('click', () => {
+      if (selectedIndex < 0) return;
+      const data = JSON.parse(localStorage.getItem('myProjects')) || [];
+      data[selectedIndex] = {
+        title: document.getElementById('title').value,
+        img: document.getElementById('img').value,
+        alt: document.getElementById('alt').value,
+        description: document.getElementById('description').value,
+        link: document.getElementById('link').value,
+        linkText: document.getElementById('linkText').value
+      };
+      localStorage.setItem('myProjects', JSON.stringify(data));
+      loadCrudData();
+    });
+
+    document.getElementById('btnDelete').addEventListener('click', () => {
+      if (selectedIndex < 0) return;
+      const data = JSON.parse(localStorage.getItem('myProjects')) || [];
+      data.splice(selectedIndex, 1);
+      localStorage.setItem('myProjects', JSON.stringify(data));
+      selectedIndex = -1;
+      selectedCard = null;
+      document.getElementById('crudForm').reset();
+      document.getElementById('btnUpdate').disabled = true;
+      document.getElementById('btnDelete').disabled = true;
+      loadCrudData();
+    });
+
+    loadCrudData();
+  }
 });

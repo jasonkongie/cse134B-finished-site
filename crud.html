@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="CRUD Page - Brandon's Research Hub">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+
+  <title>CRUD - Brandon's Research Hub</title>
+  <style>
+
+    /* distinct borde r here */
+    blog-card.selected {
+      border: 3px solid #9575CD;
+    }
+    /* container to layout the cards */
+    #crudCardsContainer {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CRUD Page</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">blog</a></li>
+
+        <li><a href="research.html">Research Data</a></li>
+        <li><a href="connect.html">Connect with Me!</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Manage Blog Data</h2>
+    <h4 class="notification">Select the card by clicking on the blog post card, then click UPDATE/DELETE</h4>
+    <form id="crudForm">
+      <label for="title">Title</label>
+
+      <input type="text" id="title"   required>
+      <label for="img">Image URL</label>
+
+      <input type="text" id="img">
+      <label for="alt">Image Alt</label>
+
+      <input type="text" id="alt">
+
+      <label for="description">Description</label>
+      <textarea id="description"></textarea>
+      <label for="link">Link</label>
+      <input type="text" id="link">
+
+      <label for="linkText">Link Text</label>
+      <input type="text" id="linkText">
+
+      <button type="button" id="btnCreate">Create</button>
+
+
+
+
+
+      <button type="button" id="btnUpdate" disabled>Update</button>
+      <button type="button" id="btnDelete" disabled>Delete</button>
+    </form>
+    <button type="button" id="btnReadAll">Refresh Items</button>
+
+
+    <section id="crudCardsContainer"></section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Brandon's Research Hub</p>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>

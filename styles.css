@@ -143,3 +143,137 @@ main   figure figcaption {
   margin-top:  0.5rem;
   font-style:   italic;
 }
+
+
+#crudForm {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+#crudForm label {
+  font-weight: bold;
+}
+
+
+#crudForm input, 
+#crudForm textarea {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+#crudForm textarea {
+  min-height: 100px;
+}
+
+#crudForm button {
+  padding: 0.5rem 1rem;
+  background-color: #673AB7;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#crudForm button:hover:not(:disabled) {
+  background-color: #5E35B1;
+}
+
+#crudForm button:disabled {
+  background-color: #B39DDB;
+  cursor: not-allowed;
+}
+
+#crudForm button {
+  margin-right: 0.5rem;
+  
+  margin-top: 1rem;
+}
+
+
+#btnReadAll {
+  padding: 0.5rem 1rem;
+  
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+#btnReadAll:hover {
+  background-color: #388E3C;
+}
+
+.notification {
+  background-color: #FFF9C4;
+  
+  padding: 1rem;
+  border-left: 4px solid #FBC02D;
+  margin-bottom: 1.5rem;
+}
+
+#contactFormSection form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+#contactFormSection fieldset {
+  grid-column: 1 / -1;
+  border: none;
+  padding: 0;
+}
+
+#contactFormSection legend {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+#contactFormSection label {
+  font-weight: bold;
+}
+
+#contactFormSection input,
+#contactFormSection textarea {
+  padding: 0.5rem;
+  
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#contactFormSection textarea {
+  min-height: 100px;
+}
+
+#contactFormSection button {
+  padding: 0.5rem 1rem;
+  background-color: #673AB7;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  margin-top: 1rem;
+  grid-column: 1 / -1;
+  width: 200px;
+  justify-self: start;
+}
+
+#contactFormSection button:hover {
+  background-color: #5E35B1;
+}
