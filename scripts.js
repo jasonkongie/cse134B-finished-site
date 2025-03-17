@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Make header logo clickable (only on index.html)
   let logo = document.querySelector("header hgroup");
   if (logo) {
     logo.style.cursor = "pointer";
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-  // Create and insert the contact sidebar if not already present in the HTML
   let sidebar = document.createElement("div");
   sidebar.id = "contactSidebar";
   sidebar.innerHTML = `
